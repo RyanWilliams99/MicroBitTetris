@@ -14,7 +14,7 @@ void removeRow(int);
 bool pressedA = false; //Set to false initially
 bool pressedB = false;
 
-void onButtonA(MicroBitEvent) //On button at
+void onButtonA(MicroBitEvent) //On button a
 {
     pressedA = true;
 }
@@ -24,21 +24,22 @@ void onButtonB(MicroBitEvent)
     pressedB = true;
 }
 
-int piecePostionColumn = 0;
+int piecePostionColumn = 0; //Current falling piece position
 int piecePostionRow = 0;
-int x;
+int x; //Used in for loops
 int y;
 int i;
-int score;
-int temp;
+int score; //Player score
+int temp; //Used in removeRow Function
 int display[5][5]; //Used to store where which pixels should be turned on
 
 int main()
 {
     uBit.display.scroll("GET READY");
+    //Listens for button presses
     uBit.messageBus.listen(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, onButtonA, MESSAGE_BUS_LISTENER_IMMEDIATE);
     uBit.messageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonB, MESSAGE_BUS_LISTENER_IMMEDIATE);
-    uBit.init();
+    uBit.init(); //Initialise
 
     while(1)
     {
@@ -66,9 +67,9 @@ int main()
         else //If next pixel is 1 or at the bottom, Add piece to display array
         {
             display[piecePostionRow][piecePostionColumn] = 1;
-            piecePostionColumn = rand() % 5;
+            piecePostionColumn = rand() % 5; //Get random number for new piece position
             piecePostionRow = 0;
-            if (display[piecePostionRow + 1][piecePostionColumn] == 1) //If new piece is on column with 4 pieces Die
+            if (display[piecePostionRow + 1][piecePostionColumn] == 1) //If new piece is on column with 4 pieces player died
             {
                 uBit.display.image.setPixelValue(piecePostionColumn,piecePostionRow,255);
                 uBit.sleep(2000);
@@ -78,12 +79,12 @@ int main()
                 while(1) //Make user tilt MicroBit to restart
                 {
                     if (uBit.accelerometer.getX() > 750 || uBit.accelerometer.getX() < -750) //Getting x value from accelerometer
-                        uBit.reset();
+                        uBit.reset(); //Same as pressing reset button
                 }
             }
 
         }
-        for (i = 4; i > -1; i--) //Checking to see if a row has 5 on pixels
+        for (i = 4; i > -1; i--) //Checking to see if a row has 5 on pixels start from bottom
         {
             if (display[i][0] == 1 && display[i][1] == 1 && display[i][2] == 1 && display[i][3] == 1 && display[i][4] == 1)
             {
@@ -92,11 +93,10 @@ int main()
                 {
                     display[i][x] = 0; //If it does turn all of and call remove row
                 }
-                removeRow(i);
+                removeRow(i); //Call removeRow
             }
         }
     }
-
 }
 
 void removeRow(int rowToBeRemoved) //Takes a int as to which row to remove
