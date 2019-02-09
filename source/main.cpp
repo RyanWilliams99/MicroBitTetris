@@ -51,7 +51,7 @@ int main()
             piecePostionColumn--; //Move piece left if button a is pressed
             pressedA = false;
         }
-        else if(pressedB && display[piecePostionRow][piecePostionColumn + 1] == 0 && piecePostionColumn + 1 < 5) //If B pressed move piece right 
+        else if(pressedB && display[piecePostionRow][piecePostionColumn + 1] == 0 && piecePostionColumn + 1 < 5) //If B pressed move piece right
         {
             piecePostionColumn++;
             pressedB = false;
@@ -113,11 +113,11 @@ void removeRow(int rowToBeRemoved) //Takes a int as to which row to remove
 
 void displayArray() //Displays the 5x5 array to respective LEDs, usually after being updated by remove row etc
 {
-    for (x = 0; x < 5; x++)
+    for (x = 0; x < 5; x++) //For every row
     {
-        for (y = 0; y < 5; y++)
+        for (y = 0; y < 5; y++) //For every column
         {
-            if (display[y][x] == 1)
+            if (display[y][x] == 1) //If value is 1 turn on respective pixel
             {
                 uBit.display.image.setPixelValue(x,y,255);
             }
