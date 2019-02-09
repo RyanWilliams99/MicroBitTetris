@@ -1,5 +1,4 @@
 /**
-/**
  * File: main.cpp
  * Author: Ryan Williams
  * Date: 02-01-2019
@@ -112,7 +111,7 @@ void removeRow(int rowToBeRemoved) //Takes a int as to which row to remove
     }
 }
 
-void displayArray() //Displays the 5x5 array usually after being updated by remove row etc
+void displayArray() //Displays the 5x5 array to respective leds, usually after being updated by remove row etc
 {
     for (x = 0; x < 5; x++)
     {

@@ -40,11 +40,14 @@ endfunction()
 # set target-defined definitions
 set(YOTTA_BUILD_YEAR "2019") # UTC year
 set(YOTTA_BUILD_MONTH "2") # UTC month 1-12
-set(YOTTA_BUILD_DAY "8") # UTC day 1-31
-set(YOTTA_BUILD_HOUR "16") # UTC hour 0-24
-set(YOTTA_BUILD_MINUTE "29") # UTC minute 0-59
-set(YOTTA_BUILD_SECOND "34") # UTC second 0-61
-set(YOTTA_BUILD_UUID "595f2d47-61c5-46b4-96c8-8b72176a031b") # unique random UUID for each build
+set(YOTTA_BUILD_DAY "9") # UTC day 1-31
+set(YOTTA_BUILD_HOUR "12") # UTC hour 0-24
+set(YOTTA_BUILD_MINUTE "28") # UTC minute 0-59
+set(YOTTA_BUILD_SECOND "52") # UTC second 0-61
+set(YOTTA_BUILD_UUID "684d4220-1f16-4fbd-8d9c-6ddd76b66659") # unique random UUID for each build
+set(YOTTA_BUILD_VCS_ID "d1f5e8ac945be8de8b46d96e4cb5e05105e0075c") # git or mercurial hash
+set(YOTTA_BUILD_VCS_CLEAN "0") # evaluates true if the version control system was clean, otherwise false
+set(YOTTA_BUILD_VCS_DESCRIPTION "d1f5e8a") # git describe or mercurial equivalent
 set(TARGET BBC_MICROBIT_CLASSIC_GCC)
 set(TARGET_LIKE_BBC_MICROBIT_CLASSIC_GCC TRUE)
 set(YOTTA_BUILD_INFO_HEADER "/home/ryan/Documents/MicroBit/Challenge1-MicroBitTetris/build/bbc-microbit-classic-gcc/yotta_build_info.h")
